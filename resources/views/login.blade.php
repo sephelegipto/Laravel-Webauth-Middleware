@@ -23,7 +23,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 	<div class="login">
-		<h1><a href="index.html">Cagayan State University </a></h1>
+		<h1><a href="#">Cagayan State University </a></h1>
 		<div class="login-bottom">
 
 			<h2>Login</h2>

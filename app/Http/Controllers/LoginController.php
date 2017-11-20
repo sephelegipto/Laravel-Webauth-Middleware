@@ -24,6 +24,11 @@ class LoginController extends Controller
     	return view('login');
     }
 
+    public function index()
+    {
+        $user_id = Auth::user()->id;
+        return $user_id;
+    }
     public function postLogin(Request $request)
     {
     	$auth = Auth::guard('web')->attempt(['email'=>$request->username, 'password'=>$request->password]);
