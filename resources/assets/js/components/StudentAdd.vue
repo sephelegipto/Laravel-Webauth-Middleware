@@ -32,7 +32,7 @@
 					<label class="label">Course</label>
 					<div class="select">
 						<select v-model="list.course_id">
-							<option v-for="cour,key in course" v-bind:value="cour.course_id">{{ cour.name }}</option>
+							<option v-for="cour,key in course" v-bind:value="cour.course_id">{{ cour.course_name }}</option>
 						</select>
 						
 					</div>

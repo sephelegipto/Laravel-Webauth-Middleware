@@ -11,7 +11,7 @@ class StudentController extends Controller
 	public function getData()
 	{
 		return  DB::table('users')
-		->join('courses', 'courses.course_id', '=', 'courses.course_id')
+		->leftJoin('courses', 'users.course_id', '=', 'courses.course_id')
 		->join('departments', 'departments.department_id', '=', 'courses.department_id')
 		->select('courses.*', 'courses.*', 'users.*', 'departments.abbre as dept_name')
 		->where('role_id', 2)
@@ -26,7 +26,7 @@ class StudentController extends Controller
 
 		->select('curriculumsubjects.*','studentchecklists.grade as grade', 'subjects.*')
 
-		
+		->where('studentchecklists.user_id', $request->id)
 		->get();
 
 		$unique = $collection->unique('subject_code');

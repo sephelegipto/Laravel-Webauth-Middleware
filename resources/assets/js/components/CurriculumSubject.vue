@@ -371,7 +371,7 @@
 							{{ item.prerequisite }}
 						</span>
 						<span class="column is-1">
-						
+							
 						</span>
 
 						<span class="panel-icon column is-1">
@@ -442,8 +442,8 @@ export default{
 				this.lists = this.temp = response.data)
 			.catch((error) => this.errors = error.response.data.errors),
 			axios.post('/curriculumsubject/getSubjects', {id : this.$route.params.id})
-            .then((response)=> this.subjects = response.data)
-            .catch((error) => this.errors = error.response.data.errors)
+			.then((response)=> this.subjects = response.data)
+			.catch((error) => this.errors = error.response.data.errors)
 		},
 		methods:{
 			openAdd(year, sem){
@@ -470,8 +470,8 @@ export default{
 					this.loading = !this.loading
 					axios.delete(`/curriculumsubject/${curriculumsubject_id}`)
 					.then((response)=> {
-this.subjects.push(this.lists[key])
-					
+						this.subjects.push(this.lists[key])
+						
 						this.lists.splice(key,1);this.loading = !this.loading
 
 					})
