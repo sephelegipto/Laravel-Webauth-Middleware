@@ -1,0 +1,1070 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jan 30, 2018 at 04:13 PM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `db_csucarig`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `courses`
+--
+
+CREATE TABLE `courses` (
+  `course_id` int(10) UNSIGNED NOT NULL,
+  `department_id` int(10) NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abbre` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`course_id`, `department_id`, `name`, `abbre`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Bachelor of Science in Information Technology', 'BSIT', NULL, NULL),
+(2, 1, 'Bachelor of Science in Computer Science', 'BSCS', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `curriculums`
+--
+
+CREATE TABLE `curriculums` (
+  `curriculum_id` int(10) UNSIGNED NOT NULL,
+  `year` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `course_id` int(10) UNSIGNED NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `curriculums`
+--
+
+INSERT INTO `curriculums` (`curriculum_id`, `year`, `course_id`, `remember_token`, `created_at`, `updated_at`) VALUES
+(3, '2013', 1, NULL, NULL, NULL),
+(4, '2013', 2, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `curriculumsubjects`
+--
+
+CREATE TABLE `curriculumsubjects` (
+  `curriculumsubject_id` int(10) UNSIGNED NOT NULL,
+  `curriculum_id` int(10) UNSIGNED NOT NULL,
+  `subject_id` int(10) UNSIGNED NOT NULL,
+  `prerequisite` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lec_hours` int(10) DEFAULT NULL,
+  `lab_hours` int(10) DEFAULT NULL,
+  `contact_hours` int(10) DEFAULT NULL,
+  `sem` int(10) UNSIGNED NOT NULL,
+  `year` int(10) UNSIGNED NOT NULL,
+  `identifier` int(11) DEFAULT NULL,
+  `lec_units` int(11) DEFAULT NULL,
+  `lab_units` int(11) DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `curriculumsubjects`
+--
+
+INSERT INTO `curriculumsubjects` (`curriculumsubject_id`, `curriculum_id`, `subject_id`, `prerequisite`, `lec_hours`, `lab_hours`, `contact_hours`, `sem`, `year`, `identifier`, `lec_units`, `lab_units`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 3, 2, '3', 3, 3, 6, 1, 1, 0, 3, 3, NULL, NULL, NULL),
+(2, 3, 3, NULL, NULL, NULL, NULL, 1, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(3, 3, 4, NULL, NULL, NULL, NULL, 1, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(4, 3, 5, NULL, NULL, NULL, NULL, 1, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(5, 3, 6, NULL, NULL, NULL, NULL, 1, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(6, 3, 7, NULL, NULL, NULL, NULL, 1, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(7, 3, 8, NULL, NULL, NULL, NULL, 1, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(8, 3, 9, NULL, NULL, NULL, NULL, 1, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(9, 3, 10, NULL, NULL, NULL, NULL, 2, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(10, 3, 11, NULL, NULL, NULL, NULL, 2, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(11, 3, 12, NULL, NULL, NULL, NULL, 2, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(12, 3, 13, NULL, NULL, NULL, NULL, 2, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(13, 3, 14, NULL, NULL, NULL, NULL, 2, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(14, 3, 15, NULL, NULL, NULL, NULL, 2, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(15, 3, 16, NULL, NULL, NULL, NULL, 2, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(16, 3, 17, NULL, NULL, NULL, NULL, 2, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(17, 3, 18, NULL, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(18, 3, 19, NULL, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(19, 3, 20, NULL, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(20, 3, 21, NULL, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(21, 3, 22, NULL, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(22, 3, 23, NULL, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(23, 3, 24, NULL, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(24, 3, 25, NULL, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(25, 3, 26, NULL, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(26, 3, 27, NULL, NULL, NULL, NULL, 2, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(27, 3, 28, NULL, NULL, NULL, NULL, 2, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(28, 3, 29, NULL, NULL, NULL, NULL, 2, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(29, 3, 30, NULL, NULL, NULL, NULL, 2, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(30, 3, 31, NULL, NULL, NULL, NULL, 2, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(31, 3, 32, NULL, NULL, NULL, NULL, 2, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(32, 3, 33, NULL, NULL, NULL, NULL, 2, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(33, 3, 34, NULL, NULL, NULL, NULL, 2, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(34, 3, 35, NULL, NULL, NULL, NULL, 1, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(35, 3, 36, NULL, NULL, NULL, NULL, 1, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(36, 3, 37, NULL, NULL, NULL, NULL, 1, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(37, 3, 38, NULL, NULL, NULL, NULL, 1, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(38, 3, 39, NULL, NULL, NULL, NULL, 1, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(39, 3, 40, NULL, NULL, NULL, NULL, 1, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(40, 3, 41, NULL, NULL, NULL, NULL, 1, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(41, 3, 42, NULL, NULL, NULL, NULL, 2, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(42, 3, 43, NULL, NULL, NULL, NULL, 2, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(43, 3, 44, NULL, NULL, NULL, NULL, 2, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(44, 3, 45, NULL, NULL, NULL, NULL, 2, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(45, 3, 46, NULL, NULL, NULL, NULL, 2, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(46, 3, 47, NULL, NULL, NULL, NULL, 2, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(47, 3, 48, NULL, NULL, NULL, NULL, 2, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(48, 3, 49, NULL, NULL, NULL, NULL, 1, 4, 0, NULL, NULL, NULL, NULL, NULL),
+(49, 3, 50, NULL, NULL, NULL, NULL, 1, 4, 0, NULL, NULL, NULL, NULL, NULL),
+(50, 3, 51, NULL, NULL, NULL, NULL, 1, 4, 0, NULL, NULL, NULL, NULL, NULL),
+(51, 3, 52, NULL, NULL, NULL, NULL, 1, 4, 0, NULL, NULL, NULL, NULL, NULL),
+(52, 3, 53, NULL, NULL, NULL, NULL, 1, 4, 0, NULL, NULL, NULL, NULL, NULL),
+(53, 3, 54, NULL, NULL, NULL, NULL, 2, 4, 0, NULL, NULL, NULL, NULL, NULL),
+(54, 4, 2, NULL, NULL, NULL, 0, 1, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(55, 4, 3, NULL, NULL, NULL, NULL, 1, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(56, 4, 4, NULL, NULL, NULL, NULL, 1, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(57, 4, 5, NULL, NULL, NULL, NULL, 1, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(58, 4, 6, NULL, NULL, NULL, NULL, 1, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(59, 4, 7, NULL, NULL, NULL, NULL, 1, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(60, 4, 8, NULL, NULL, NULL, NULL, 1, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(61, 4, 9, NULL, NULL, NULL, NULL, 1, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(62, 4, 60, NULL, NULL, NULL, 0, 2, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(63, 4, 61, NULL, NULL, NULL, NULL, 2, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(64, 4, 12, NULL, NULL, NULL, NULL, 2, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(65, 4, 13, NULL, NULL, NULL, NULL, 2, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(66, 4, 14, NULL, NULL, NULL, NULL, 2, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(67, 4, 15, NULL, NULL, NULL, NULL, 2, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(68, 4, 16, NULL, NULL, NULL, NULL, 2, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(69, 4, 17, NULL, NULL, NULL, NULL, 2, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(70, 4, 62, NULL, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(71, 4, 63, NULL, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(72, 4, 19, NULL, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(73, 4, 64, NULL, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(74, 4, 23, NULL, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(75, 4, 24, NULL, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(76, 4, 65, NULL, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(77, 4, 26, NULL, NULL, NULL, NULL, 1, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(78, 4, 66, NULL, NULL, NULL, NULL, 2, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(79, 4, 67, NULL, NULL, NULL, NULL, 2, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(80, 4, 68, NULL, NULL, NULL, NULL, 2, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(81, 4, 69, NULL, NULL, NULL, NULL, 2, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(82, 4, 33, NULL, NULL, NULL, NULL, 2, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(83, 4, 30, NULL, NULL, NULL, NULL, 2, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(84, 4, 31, NULL, NULL, NULL, NULL, 2, 2, 1, NULL, NULL, NULL, NULL, NULL),
+(85, 4, 90, NULL, NULL, NULL, 0, 2, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(86, 4, 34, NULL, NULL, NULL, NULL, 2, 2, 0, NULL, NULL, NULL, NULL, NULL),
+(87, 4, 70, NULL, NULL, NULL, NULL, 1, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(88, 4, 71, NULL, NULL, NULL, NULL, 1, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(89, 4, 27, NULL, NULL, NULL, NULL, 1, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(90, 4, 73, NULL, NULL, NULL, NULL, 1, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(91, 4, 38, NULL, NULL, NULL, NULL, 1, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(92, 4, 32, NULL, NULL, NULL, NULL, 1, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(93, 4, 74, NULL, NULL, NULL, NULL, 2, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(94, 4, 75, NULL, NULL, NULL, NULL, 2, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(95, 4, 76, NULL, NULL, NULL, NULL, 2, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(96, 4, 21, NULL, NULL, NULL, NULL, 2, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(97, 4, 37, NULL, NULL, NULL, NULL, 2, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(98, 4, 48, NULL, NULL, NULL, NULL, 2, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(99, 4, 80, NULL, NULL, NULL, NULL, 1, 4, 0, NULL, NULL, NULL, NULL, NULL),
+(100, 4, 81, NULL, NULL, NULL, NULL, 1, 4, 0, NULL, NULL, NULL, NULL, NULL),
+(101, 4, 82, NULL, NULL, NULL, NULL, 1, 4, 0, NULL, NULL, NULL, NULL, NULL),
+(102, 4, 46, NULL, NULL, NULL, NULL, 1, 4, 0, NULL, NULL, NULL, NULL, NULL),
+(103, 4, 84, NULL, NULL, NULL, NULL, 1, 4, 0, NULL, NULL, NULL, NULL, NULL),
+(104, 4, 39, NULL, NULL, NULL, NULL, 1, 4, 0, NULL, NULL, NULL, NULL, NULL),
+(105, 4, 85, NULL, NULL, NULL, NULL, 2, 4, 0, NULL, NULL, NULL, NULL, NULL),
+(106, 4, 86, NULL, NULL, NULL, NULL, 2, 4, 0, NULL, NULL, NULL, NULL, NULL),
+(107, 4, 87, NULL, NULL, NULL, 0, 2, 4, 0, NULL, NULL, NULL, NULL, NULL),
+(108, 4, 88, NULL, NULL, NULL, NULL, 2, 4, 0, NULL, NULL, NULL, NULL, NULL),
+(109, 4, 89, NULL, NULL, NULL, NULL, 2, 4, 0, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `departments`
+--
+
+CREATE TABLE `departments` (
+  `department_id` int(10) NOT NULL,
+  `name` varchar(191) NOT NULL,
+  `track` varchar(191) DEFAULT NULL,
+  `abbre` varchar(191) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `departments`
+--
+
+INSERT INTO `departments` (`department_id`, `name`, `track`, `abbre`) VALUES
+(1, 'College of Information and Computing Sciences', NULL, 'CICS');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_100000_create_password_resets_table', 1),
+(2, '2017_11_14_122914_create_departments_table', 1),
+(3, '2017_11_14_122926_create_courses_table', 1),
+(4, '2017_11_14_124944_create_roles_table', 1),
+(5, '2017_11_14_125329_create_users_table', 1),
+(6, '2017_11_18_160156_create_subject_table', 1),
+(7, '2017_11_19_044551_create_curriculums_table', 1),
+(8, '2017_11_19_134703_create_curriculumsubjects_table', 1),
+(9, '2017_11_20_122245_create_studentchecklists_table', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `role_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`role_id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'admin', NULL, NULL),
+(2, 'student', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `studentchecklists`
+--
+
+CREATE TABLE `studentchecklists` (
+  `studentchecklist_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `curriculumsubject_id` int(10) UNSIGNED NOT NULL,
+  `grade` int(10) UNSIGNED DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `studentchecklists`
+--
+
+INSERT INTO `studentchecklists` (`studentchecklist_id`, `user_id`, `curriculumsubject_id`, `grade`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 25, 100, NULL, NULL, NULL, NULL),
+(2, 26, 18, NULL, NULL, NULL, NULL),
+(3, 26, 19, NULL, NULL, NULL, NULL),
+(4, 26, 20, NULL, NULL, NULL, NULL),
+(5, 26, 21, NULL, NULL, NULL, NULL),
+(6, 26, 22, NULL, NULL, NULL, NULL),
+(7, 26, 23, NULL, NULL, NULL, NULL),
+(8, 26, 24, NULL, NULL, NULL, NULL),
+(9, 26, 25, NULL, NULL, NULL, NULL),
+(10, 26, 26, NULL, NULL, NULL, NULL),
+(11, 26, 27, NULL, NULL, NULL, NULL),
+(12, 26, 28, NULL, NULL, NULL, NULL),
+(13, 26, 29, NULL, NULL, NULL, NULL),
+(14, 26, 30, NULL, NULL, NULL, NULL),
+(15, 26, 31, NULL, NULL, NULL, NULL),
+(16, 26, 32, NULL, NULL, NULL, NULL),
+(17, 26, 33, NULL, NULL, NULL, NULL),
+(18, 26, 34, NULL, NULL, NULL, NULL),
+(19, 26, 35, NULL, NULL, NULL, NULL),
+(20, 26, 36, NULL, NULL, NULL, NULL),
+(21, 26, 37, NULL, NULL, NULL, NULL),
+(22, 26, 38, NULL, NULL, NULL, NULL),
+(23, 26, 39, NULL, NULL, NULL, NULL),
+(24, 26, 40, NULL, NULL, NULL, NULL),
+(25, 26, 41, NULL, NULL, NULL, NULL),
+(26, 26, 42, NULL, NULL, NULL, NULL),
+(27, 26, 43, NULL, NULL, NULL, NULL),
+(28, 26, 44, NULL, NULL, NULL, NULL),
+(29, 26, 45, NULL, NULL, NULL, NULL),
+(30, 26, 46, NULL, NULL, NULL, NULL),
+(31, 26, 47, NULL, NULL, NULL, NULL),
+(32, 26, 48, NULL, NULL, NULL, NULL),
+(33, 26, 49, NULL, NULL, NULL, NULL),
+(34, 26, 50, NULL, NULL, NULL, NULL),
+(35, 26, 51, NULL, NULL, NULL, NULL),
+(36, 26, 52, NULL, NULL, NULL, NULL),
+(37, 26, 53, NULL, NULL, NULL, NULL),
+(38, 26, 54, NULL, NULL, NULL, NULL),
+(39, 26, 55, NULL, NULL, NULL, NULL),
+(40, 26, 56, NULL, NULL, NULL, NULL),
+(41, 26, 57, NULL, NULL, NULL, NULL),
+(42, 26, 58, NULL, NULL, NULL, NULL),
+(43, 26, 59, NULL, NULL, NULL, NULL),
+(44, 26, 60, NULL, NULL, NULL, NULL),
+(45, 26, 61, NULL, NULL, NULL, NULL),
+(46, 26, 64, NULL, NULL, NULL, NULL),
+(47, 26, 75, NULL, NULL, NULL, NULL),
+(48, 26, 76, NULL, NULL, NULL, NULL),
+(49, 26, 77, NULL, NULL, NULL, NULL),
+(50, 26, 78, NULL, NULL, NULL, NULL),
+(51, 26, 87, NULL, NULL, NULL, NULL),
+(52, 26, 92, NULL, NULL, NULL, NULL),
+(53, 26, 97, NULL, NULL, NULL, NULL),
+(54, 26, 98, NULL, NULL, NULL, NULL),
+(55, 27, 18, NULL, NULL, NULL, NULL),
+(56, 27, 19, NULL, NULL, NULL, NULL),
+(57, 27, 20, NULL, NULL, NULL, NULL),
+(58, 27, 21, NULL, NULL, NULL, NULL),
+(59, 27, 22, NULL, NULL, NULL, NULL),
+(60, 27, 23, NULL, NULL, NULL, NULL),
+(61, 27, 24, NULL, NULL, NULL, NULL),
+(62, 27, 25, NULL, NULL, NULL, NULL),
+(63, 27, 26, NULL, NULL, NULL, NULL),
+(64, 27, 27, NULL, NULL, NULL, NULL),
+(65, 27, 28, NULL, NULL, NULL, NULL),
+(66, 27, 29, NULL, NULL, NULL, NULL),
+(67, 27, 30, NULL, NULL, NULL, NULL),
+(68, 27, 31, NULL, NULL, NULL, NULL),
+(69, 27, 32, NULL, NULL, NULL, NULL),
+(70, 27, 33, NULL, NULL, NULL, NULL),
+(71, 27, 34, NULL, NULL, NULL, NULL),
+(72, 27, 35, NULL, NULL, NULL, NULL),
+(73, 27, 36, NULL, NULL, NULL, NULL),
+(74, 27, 37, NULL, NULL, NULL, NULL),
+(75, 27, 38, NULL, NULL, NULL, NULL),
+(76, 27, 39, NULL, NULL, NULL, NULL),
+(77, 27, 40, NULL, NULL, NULL, NULL),
+(78, 27, 41, NULL, NULL, NULL, NULL),
+(79, 27, 42, NULL, NULL, NULL, NULL),
+(80, 27, 43, NULL, NULL, NULL, NULL),
+(81, 27, 44, NULL, NULL, NULL, NULL),
+(82, 27, 45, NULL, NULL, NULL, NULL),
+(83, 27, 46, NULL, NULL, NULL, NULL),
+(84, 27, 47, NULL, NULL, NULL, NULL),
+(85, 27, 48, NULL, NULL, NULL, NULL),
+(86, 27, 49, NULL, NULL, NULL, NULL),
+(87, 27, 50, NULL, NULL, NULL, NULL),
+(88, 27, 51, NULL, NULL, NULL, NULL),
+(89, 27, 52, NULL, NULL, NULL, NULL),
+(90, 27, 53, NULL, NULL, NULL, NULL),
+(91, 27, 54, NULL, NULL, NULL, NULL),
+(92, 27, 55, NULL, NULL, NULL, NULL),
+(93, 27, 56, NULL, NULL, NULL, NULL),
+(94, 27, 57, NULL, NULL, NULL, NULL),
+(95, 27, 58, NULL, NULL, NULL, NULL),
+(96, 27, 59, NULL, NULL, NULL, NULL),
+(97, 27, 60, NULL, NULL, NULL, NULL),
+(98, 27, 61, NULL, NULL, NULL, NULL),
+(99, 27, 64, NULL, NULL, NULL, NULL),
+(100, 27, 75, NULL, NULL, NULL, NULL),
+(101, 27, 76, NULL, NULL, NULL, NULL),
+(102, 27, 77, NULL, NULL, NULL, NULL),
+(103, 27, 78, NULL, NULL, NULL, NULL),
+(104, 27, 87, NULL, NULL, NULL, NULL),
+(105, 27, 92, NULL, NULL, NULL, NULL),
+(106, 27, 97, NULL, NULL, NULL, NULL),
+(107, 27, 98, NULL, NULL, NULL, NULL),
+(108, 27, 101, NULL, NULL, NULL, NULL),
+(109, 28, 18, 88, NULL, NULL, NULL),
+(110, 28, 19, NULL, NULL, NULL, NULL),
+(111, 28, 20, NULL, NULL, NULL, NULL),
+(112, 28, 21, NULL, NULL, NULL, NULL),
+(113, 28, 22, NULL, NULL, NULL, NULL),
+(114, 28, 23, NULL, NULL, NULL, NULL),
+(115, 28, 24, NULL, NULL, NULL, NULL),
+(116, 28, 25, NULL, NULL, NULL, NULL),
+(117, 28, 26, NULL, NULL, NULL, NULL),
+(118, 28, 27, NULL, NULL, NULL, NULL),
+(119, 28, 28, NULL, NULL, NULL, NULL),
+(120, 28, 29, NULL, NULL, NULL, NULL),
+(121, 28, 30, NULL, NULL, NULL, NULL),
+(122, 28, 31, NULL, NULL, NULL, NULL),
+(123, 28, 32, NULL, NULL, NULL, NULL),
+(124, 28, 33, NULL, NULL, NULL, NULL),
+(125, 28, 34, NULL, NULL, NULL, NULL),
+(126, 28, 35, NULL, NULL, NULL, NULL),
+(127, 28, 36, NULL, NULL, NULL, NULL),
+(128, 28, 37, NULL, NULL, NULL, NULL),
+(129, 28, 38, NULL, NULL, NULL, NULL),
+(130, 28, 39, NULL, NULL, NULL, NULL),
+(131, 28, 40, NULL, NULL, NULL, NULL),
+(132, 28, 41, NULL, NULL, NULL, NULL),
+(133, 28, 42, NULL, NULL, NULL, NULL),
+(134, 28, 43, NULL, NULL, NULL, NULL),
+(135, 28, 44, NULL, NULL, NULL, NULL),
+(136, 28, 45, NULL, NULL, NULL, NULL),
+(137, 28, 46, NULL, NULL, NULL, NULL),
+(138, 28, 47, NULL, NULL, NULL, NULL),
+(139, 28, 48, NULL, NULL, NULL, NULL),
+(140, 28, 49, NULL, NULL, NULL, NULL),
+(141, 28, 50, NULL, NULL, NULL, NULL),
+(142, 28, 51, NULL, NULL, NULL, NULL),
+(143, 28, 52, NULL, NULL, NULL, NULL),
+(144, 28, 53, NULL, NULL, NULL, NULL),
+(145, 28, 54, NULL, NULL, NULL, NULL),
+(146, 28, 55, NULL, NULL, NULL, NULL),
+(147, 28, 56, NULL, NULL, NULL, NULL),
+(148, 28, 57, NULL, NULL, NULL, NULL),
+(149, 28, 58, NULL, NULL, NULL, NULL),
+(150, 28, 59, NULL, NULL, NULL, NULL),
+(151, 28, 60, NULL, NULL, NULL, NULL),
+(152, 28, 61, NULL, NULL, NULL, NULL),
+(153, 28, 64, NULL, NULL, NULL, NULL),
+(154, 28, 75, 82, NULL, NULL, NULL),
+(155, 28, 76, 4, NULL, NULL, NULL),
+(156, 28, 77, NULL, NULL, NULL, NULL),
+(157, 28, 78, NULL, NULL, NULL, NULL),
+(158, 28, 87, NULL, NULL, NULL, NULL),
+(159, 28, 92, NULL, NULL, NULL, NULL),
+(160, 28, 97, NULL, NULL, NULL, NULL),
+(161, 28, 98, NULL, NULL, NULL, NULL),
+(162, 28, 100, NULL, NULL, NULL, NULL),
+(163, 28, 101, NULL, NULL, NULL, NULL),
+(164, 28, 102, NULL, NULL, NULL, NULL),
+(165, 28, 103, NULL, NULL, NULL, NULL),
+(166, 29, 18, NULL, NULL, NULL, NULL),
+(167, 29, 19, NULL, NULL, NULL, NULL),
+(168, 29, 20, NULL, NULL, NULL, NULL),
+(169, 29, 21, NULL, NULL, NULL, NULL),
+(170, 29, 22, NULL, NULL, NULL, NULL),
+(171, 29, 23, NULL, NULL, NULL, NULL),
+(172, 29, 24, NULL, NULL, NULL, NULL),
+(173, 29, 25, NULL, NULL, NULL, NULL),
+(174, 29, 26, NULL, NULL, NULL, NULL),
+(175, 29, 27, NULL, NULL, NULL, NULL),
+(176, 29, 28, NULL, NULL, NULL, NULL),
+(177, 29, 29, NULL, NULL, NULL, NULL),
+(178, 29, 30, NULL, NULL, NULL, NULL),
+(179, 29, 31, NULL, NULL, NULL, NULL),
+(180, 29, 32, NULL, NULL, NULL, NULL),
+(181, 29, 33, NULL, NULL, NULL, NULL),
+(182, 29, 34, NULL, NULL, NULL, NULL),
+(183, 29, 35, NULL, NULL, NULL, NULL),
+(184, 29, 36, NULL, NULL, NULL, NULL),
+(185, 29, 37, NULL, NULL, NULL, NULL),
+(186, 29, 38, NULL, NULL, NULL, NULL),
+(187, 29, 39, NULL, NULL, NULL, NULL),
+(188, 29, 40, NULL, NULL, NULL, NULL),
+(189, 29, 41, NULL, NULL, NULL, NULL),
+(190, 29, 42, NULL, NULL, NULL, NULL),
+(191, 29, 43, NULL, NULL, NULL, NULL),
+(192, 29, 44, NULL, NULL, NULL, NULL),
+(193, 29, 45, NULL, NULL, NULL, NULL),
+(194, 29, 46, NULL, NULL, NULL, NULL),
+(195, 29, 47, NULL, NULL, NULL, NULL),
+(196, 29, 48, NULL, NULL, NULL, NULL),
+(197, 29, 49, NULL, NULL, NULL, NULL),
+(198, 29, 50, NULL, NULL, NULL, NULL),
+(199, 29, 51, NULL, NULL, NULL, NULL),
+(200, 29, 52, NULL, NULL, NULL, NULL),
+(201, 29, 53, NULL, NULL, NULL, NULL),
+(202, 29, 54, NULL, NULL, NULL, NULL),
+(203, 29, 55, NULL, NULL, NULL, NULL),
+(204, 29, 56, NULL, NULL, NULL, NULL),
+(205, 29, 57, NULL, NULL, NULL, NULL),
+(206, 29, 58, NULL, NULL, NULL, NULL),
+(207, 29, 59, NULL, NULL, NULL, NULL),
+(208, 29, 60, NULL, NULL, NULL, NULL),
+(209, 29, 61, NULL, NULL, NULL, NULL),
+(210, 29, 64, NULL, NULL, NULL, NULL),
+(211, 29, 75, 87, NULL, NULL, NULL),
+(212, 29, 76, NULL, NULL, NULL, NULL),
+(213, 29, 77, NULL, NULL, NULL, NULL),
+(214, 29, 78, NULL, NULL, NULL, NULL),
+(215, 29, 87, NULL, NULL, NULL, NULL),
+(216, 29, 92, NULL, NULL, NULL, NULL),
+(217, 29, 97, NULL, NULL, NULL, NULL),
+(218, 29, 98, NULL, NULL, NULL, NULL),
+(219, 29, 100, NULL, NULL, NULL, NULL),
+(220, 29, 101, NULL, NULL, NULL, NULL),
+(221, 29, 102, NULL, NULL, NULL, NULL),
+(222, 29, 103, NULL, NULL, NULL, NULL),
+(223, 30, 18, NULL, NULL, NULL, NULL),
+(224, 30, 19, NULL, NULL, NULL, NULL),
+(225, 30, 20, NULL, NULL, NULL, NULL),
+(226, 30, 21, NULL, NULL, NULL, NULL),
+(227, 30, 22, NULL, NULL, NULL, NULL),
+(228, 30, 23, NULL, NULL, NULL, NULL),
+(229, 30, 24, NULL, NULL, NULL, NULL),
+(230, 30, 25, NULL, NULL, NULL, NULL),
+(231, 30, 26, NULL, NULL, NULL, NULL),
+(232, 30, 27, NULL, NULL, NULL, NULL),
+(233, 30, 28, NULL, NULL, NULL, NULL),
+(234, 30, 29, NULL, NULL, NULL, NULL),
+(235, 30, 30, NULL, NULL, NULL, NULL),
+(236, 30, 31, NULL, NULL, NULL, NULL),
+(237, 30, 32, NULL, NULL, NULL, NULL),
+(238, 30, 33, NULL, NULL, NULL, NULL),
+(239, 30, 34, NULL, NULL, NULL, NULL),
+(240, 30, 35, NULL, NULL, NULL, NULL),
+(241, 30, 36, NULL, NULL, NULL, NULL),
+(242, 30, 37, NULL, NULL, NULL, NULL),
+(243, 30, 38, NULL, NULL, NULL, NULL),
+(244, 30, 39, NULL, NULL, NULL, NULL),
+(245, 30, 40, NULL, NULL, NULL, NULL),
+(246, 30, 41, NULL, NULL, NULL, NULL),
+(247, 30, 42, NULL, NULL, NULL, NULL),
+(248, 30, 43, NULL, NULL, NULL, NULL),
+(249, 30, 44, NULL, NULL, NULL, NULL),
+(250, 30, 45, NULL, NULL, NULL, NULL),
+(251, 30, 46, NULL, NULL, NULL, NULL),
+(252, 30, 47, NULL, NULL, NULL, NULL),
+(253, 30, 48, NULL, NULL, NULL, NULL),
+(254, 30, 49, NULL, NULL, NULL, NULL),
+(255, 30, 50, NULL, NULL, NULL, NULL),
+(256, 30, 51, NULL, NULL, NULL, NULL),
+(257, 30, 52, NULL, NULL, NULL, NULL),
+(258, 30, 53, NULL, NULL, NULL, NULL),
+(259, 30, 54, NULL, NULL, NULL, NULL),
+(260, 30, 55, NULL, NULL, NULL, NULL),
+(261, 30, 56, NULL, NULL, NULL, NULL),
+(262, 30, 57, NULL, NULL, NULL, NULL),
+(263, 30, 58, NULL, NULL, NULL, NULL),
+(264, 30, 59, NULL, NULL, NULL, NULL),
+(265, 30, 60, NULL, NULL, NULL, NULL),
+(266, 30, 61, NULL, NULL, NULL, NULL),
+(267, 30, 64, NULL, NULL, NULL, NULL),
+(268, 30, 75, NULL, NULL, NULL, NULL),
+(269, 30, 76, NULL, NULL, NULL, NULL),
+(270, 30, 77, NULL, NULL, NULL, NULL),
+(271, 30, 78, NULL, NULL, NULL, NULL),
+(272, 30, 87, NULL, NULL, NULL, NULL),
+(273, 30, 92, NULL, NULL, NULL, NULL),
+(274, 30, 97, NULL, NULL, NULL, NULL),
+(275, 30, 98, NULL, NULL, NULL, NULL),
+(276, 30, 100, NULL, NULL, NULL, NULL),
+(277, 30, 101, NULL, NULL, NULL, NULL),
+(278, 30, 102, NULL, NULL, NULL, NULL),
+(279, 30, 103, NULL, NULL, NULL, NULL),
+(280, 31, 18, NULL, NULL, NULL, NULL),
+(281, 31, 19, NULL, NULL, NULL, NULL),
+(282, 31, 20, NULL, NULL, NULL, NULL),
+(283, 31, 21, NULL, NULL, NULL, NULL),
+(284, 31, 22, NULL, NULL, NULL, NULL),
+(285, 31, 23, NULL, NULL, NULL, NULL),
+(286, 31, 24, NULL, NULL, NULL, NULL),
+(287, 31, 25, NULL, NULL, NULL, NULL),
+(288, 31, 26, NULL, NULL, NULL, NULL),
+(289, 31, 27, NULL, NULL, NULL, NULL),
+(290, 31, 28, NULL, NULL, NULL, NULL),
+(291, 31, 29, NULL, NULL, NULL, NULL),
+(292, 31, 30, NULL, NULL, NULL, NULL),
+(293, 31, 31, NULL, NULL, NULL, NULL),
+(294, 31, 32, NULL, NULL, NULL, NULL),
+(295, 31, 33, NULL, NULL, NULL, NULL),
+(296, 31, 34, NULL, NULL, NULL, NULL),
+(297, 31, 35, NULL, NULL, NULL, NULL),
+(298, 31, 36, NULL, NULL, NULL, NULL),
+(299, 31, 37, NULL, NULL, NULL, NULL),
+(300, 31, 38, NULL, NULL, NULL, NULL),
+(301, 31, 39, NULL, NULL, NULL, NULL),
+(302, 31, 40, NULL, NULL, NULL, NULL),
+(303, 31, 41, NULL, NULL, NULL, NULL),
+(304, 31, 42, NULL, NULL, NULL, NULL),
+(305, 31, 43, NULL, NULL, NULL, NULL),
+(306, 31, 44, NULL, NULL, NULL, NULL),
+(307, 31, 45, NULL, NULL, NULL, NULL),
+(308, 31, 46, NULL, NULL, NULL, NULL),
+(309, 31, 47, NULL, NULL, NULL, NULL),
+(310, 31, 48, NULL, NULL, NULL, NULL),
+(311, 31, 49, NULL, NULL, NULL, NULL),
+(312, 31, 50, NULL, NULL, NULL, NULL),
+(313, 31, 51, NULL, NULL, NULL, NULL),
+(314, 31, 52, NULL, NULL, NULL, NULL),
+(315, 31, 53, NULL, NULL, NULL, NULL),
+(316, 31, 54, NULL, NULL, NULL, NULL),
+(317, 31, 55, NULL, NULL, NULL, NULL),
+(318, 31, 56, NULL, NULL, NULL, NULL),
+(319, 31, 57, NULL, NULL, NULL, NULL),
+(320, 31, 58, NULL, NULL, NULL, NULL),
+(321, 31, 59, NULL, NULL, NULL, NULL),
+(322, 31, 60, NULL, NULL, NULL, NULL),
+(323, 31, 61, NULL, NULL, NULL, NULL),
+(324, 31, 64, NULL, NULL, NULL, NULL),
+(325, 31, 75, NULL, NULL, NULL, NULL),
+(326, 31, 76, NULL, NULL, NULL, NULL),
+(327, 31, 77, NULL, NULL, NULL, NULL),
+(328, 31, 78, NULL, NULL, NULL, NULL),
+(329, 31, 87, NULL, NULL, NULL, NULL),
+(330, 31, 92, NULL, NULL, NULL, NULL),
+(331, 31, 97, NULL, NULL, NULL, NULL),
+(332, 31, 98, NULL, NULL, NULL, NULL),
+(333, 31, 100, NULL, NULL, NULL, NULL),
+(334, 31, 101, NULL, NULL, NULL, NULL),
+(335, 31, 102, NULL, NULL, NULL, NULL),
+(336, 31, 103, NULL, NULL, NULL, NULL),
+(337, 32, 18, NULL, NULL, NULL, NULL),
+(338, 32, 19, NULL, NULL, NULL, NULL),
+(339, 32, 20, NULL, NULL, NULL, NULL),
+(340, 32, 21, NULL, NULL, NULL, NULL),
+(341, 32, 22, NULL, NULL, NULL, NULL),
+(342, 32, 23, NULL, NULL, NULL, NULL),
+(343, 32, 24, NULL, NULL, NULL, NULL),
+(344, 32, 25, NULL, NULL, NULL, NULL),
+(345, 32, 26, NULL, NULL, NULL, NULL),
+(346, 32, 27, NULL, NULL, NULL, NULL),
+(347, 32, 28, NULL, NULL, NULL, NULL),
+(348, 32, 29, NULL, NULL, NULL, NULL),
+(349, 32, 30, NULL, NULL, NULL, NULL),
+(350, 32, 31, NULL, NULL, NULL, NULL),
+(351, 32, 32, NULL, NULL, NULL, NULL),
+(352, 32, 33, NULL, NULL, NULL, NULL),
+(353, 32, 34, NULL, NULL, NULL, NULL),
+(354, 32, 35, NULL, NULL, NULL, NULL),
+(355, 32, 36, NULL, NULL, NULL, NULL),
+(356, 32, 37, NULL, NULL, NULL, NULL),
+(357, 32, 38, NULL, NULL, NULL, NULL),
+(358, 32, 39, NULL, NULL, NULL, NULL),
+(359, 32, 40, NULL, NULL, NULL, NULL),
+(360, 32, 41, NULL, NULL, NULL, NULL),
+(361, 32, 42, NULL, NULL, NULL, NULL),
+(362, 32, 43, NULL, NULL, NULL, NULL),
+(363, 32, 44, NULL, NULL, NULL, NULL),
+(364, 32, 45, NULL, NULL, NULL, NULL),
+(365, 32, 46, NULL, NULL, NULL, NULL),
+(366, 32, 47, NULL, NULL, NULL, NULL),
+(367, 32, 48, NULL, NULL, NULL, NULL),
+(368, 32, 49, NULL, NULL, NULL, NULL),
+(369, 32, 50, NULL, NULL, NULL, NULL),
+(370, 32, 51, NULL, NULL, NULL, NULL),
+(371, 32, 52, NULL, NULL, NULL, NULL),
+(372, 32, 53, NULL, NULL, NULL, NULL),
+(373, 32, 54, NULL, NULL, NULL, NULL),
+(374, 32, 55, NULL, NULL, NULL, NULL),
+(375, 32, 56, NULL, NULL, NULL, NULL),
+(376, 32, 57, NULL, NULL, NULL, NULL),
+(377, 32, 58, NULL, NULL, NULL, NULL),
+(378, 32, 59, NULL, NULL, NULL, NULL),
+(379, 32, 60, NULL, NULL, NULL, NULL),
+(380, 32, 61, NULL, NULL, NULL, NULL),
+(381, 32, 64, NULL, NULL, NULL, NULL),
+(382, 32, 75, NULL, NULL, NULL, NULL),
+(383, 32, 76, NULL, NULL, NULL, NULL),
+(384, 32, 77, NULL, NULL, NULL, NULL),
+(385, 32, 78, NULL, NULL, NULL, NULL),
+(386, 32, 87, NULL, NULL, NULL, NULL),
+(387, 32, 92, NULL, NULL, NULL, NULL),
+(388, 32, 97, NULL, NULL, NULL, NULL),
+(389, 32, 98, NULL, NULL, NULL, NULL),
+(390, 32, 100, NULL, NULL, NULL, NULL),
+(391, 32, 101, NULL, NULL, NULL, NULL),
+(392, 32, 102, NULL, NULL, NULL, NULL),
+(393, 32, 103, NULL, NULL, NULL, NULL),
+(394, 33, 18, NULL, NULL, NULL, NULL),
+(395, 33, 19, NULL, NULL, NULL, NULL),
+(396, 33, 20, NULL, NULL, NULL, NULL),
+(397, 33, 21, NULL, NULL, NULL, NULL),
+(398, 33, 22, NULL, NULL, NULL, NULL),
+(399, 33, 23, NULL, NULL, NULL, NULL),
+(400, 33, 24, NULL, NULL, NULL, NULL),
+(401, 33, 25, NULL, NULL, NULL, NULL),
+(402, 33, 26, NULL, NULL, NULL, NULL),
+(403, 33, 27, NULL, NULL, NULL, NULL),
+(404, 33, 28, NULL, NULL, NULL, NULL),
+(405, 33, 29, NULL, NULL, NULL, NULL),
+(406, 33, 30, NULL, NULL, NULL, NULL),
+(407, 33, 31, NULL, NULL, NULL, NULL),
+(408, 33, 32, NULL, NULL, NULL, NULL),
+(409, 33, 33, NULL, NULL, NULL, NULL),
+(410, 33, 34, NULL, NULL, NULL, NULL),
+(411, 33, 35, NULL, NULL, NULL, NULL),
+(412, 33, 36, NULL, NULL, NULL, NULL),
+(413, 33, 37, NULL, NULL, NULL, NULL),
+(414, 33, 38, NULL, NULL, NULL, NULL),
+(415, 33, 39, NULL, NULL, NULL, NULL),
+(416, 33, 40, NULL, NULL, NULL, NULL),
+(417, 33, 41, NULL, NULL, NULL, NULL),
+(418, 33, 42, NULL, NULL, NULL, NULL),
+(419, 33, 43, NULL, NULL, NULL, NULL),
+(420, 33, 44, NULL, NULL, NULL, NULL),
+(421, 33, 45, NULL, NULL, NULL, NULL),
+(422, 33, 46, NULL, NULL, NULL, NULL),
+(423, 33, 47, NULL, NULL, NULL, NULL),
+(424, 33, 48, NULL, NULL, NULL, NULL),
+(425, 33, 49, NULL, NULL, NULL, NULL),
+(426, 33, 50, NULL, NULL, NULL, NULL),
+(427, 33, 51, NULL, NULL, NULL, NULL),
+(428, 33, 52, NULL, NULL, NULL, NULL),
+(429, 33, 53, NULL, NULL, NULL, NULL),
+(430, 33, 54, NULL, NULL, NULL, NULL),
+(431, 33, 55, NULL, NULL, NULL, NULL),
+(432, 33, 56, NULL, NULL, NULL, NULL),
+(433, 33, 57, NULL, NULL, NULL, NULL),
+(434, 33, 58, NULL, NULL, NULL, NULL),
+(435, 33, 59, NULL, NULL, NULL, NULL),
+(436, 33, 60, NULL, NULL, NULL, NULL),
+(437, 33, 61, NULL, NULL, NULL, NULL),
+(438, 33, 64, NULL, NULL, NULL, NULL),
+(439, 33, 75, NULL, NULL, NULL, NULL),
+(440, 33, 76, NULL, NULL, NULL, NULL),
+(441, 33, 77, NULL, NULL, NULL, NULL),
+(442, 33, 78, NULL, NULL, NULL, NULL),
+(443, 33, 87, NULL, NULL, NULL, NULL),
+(444, 33, 92, NULL, NULL, NULL, NULL),
+(445, 33, 97, NULL, NULL, NULL, NULL),
+(446, 33, 98, NULL, NULL, NULL, NULL),
+(447, 33, 100, NULL, NULL, NULL, NULL),
+(448, 33, 101, NULL, NULL, NULL, NULL),
+(449, 33, 102, NULL, NULL, NULL, NULL),
+(450, 33, 103, NULL, NULL, NULL, NULL),
+(451, 34, 18, NULL, NULL, NULL, NULL),
+(452, 34, 19, NULL, NULL, NULL, NULL),
+(453, 34, 20, NULL, NULL, NULL, NULL),
+(454, 34, 21, NULL, NULL, NULL, NULL),
+(455, 34, 22, NULL, NULL, NULL, NULL),
+(456, 34, 23, NULL, NULL, NULL, NULL),
+(457, 34, 24, NULL, NULL, NULL, NULL),
+(458, 34, 25, NULL, NULL, NULL, NULL),
+(459, 34, 26, NULL, NULL, NULL, NULL),
+(460, 34, 27, NULL, NULL, NULL, NULL),
+(461, 34, 28, NULL, NULL, NULL, NULL),
+(462, 34, 29, NULL, NULL, NULL, NULL),
+(463, 34, 30, NULL, NULL, NULL, NULL),
+(464, 34, 31, NULL, NULL, NULL, NULL),
+(465, 34, 32, NULL, NULL, NULL, NULL),
+(466, 34, 33, NULL, NULL, NULL, NULL),
+(467, 34, 34, NULL, NULL, NULL, NULL),
+(468, 34, 35, NULL, NULL, NULL, NULL),
+(469, 34, 36, NULL, NULL, NULL, NULL),
+(470, 34, 37, NULL, NULL, NULL, NULL),
+(471, 34, 38, NULL, NULL, NULL, NULL),
+(472, 34, 39, NULL, NULL, NULL, NULL),
+(473, 34, 40, NULL, NULL, NULL, NULL),
+(474, 34, 41, NULL, NULL, NULL, NULL),
+(475, 34, 42, NULL, NULL, NULL, NULL),
+(476, 34, 43, NULL, NULL, NULL, NULL),
+(477, 34, 44, NULL, NULL, NULL, NULL),
+(478, 34, 45, NULL, NULL, NULL, NULL),
+(479, 34, 46, NULL, NULL, NULL, NULL),
+(480, 34, 47, NULL, NULL, NULL, NULL),
+(481, 34, 48, NULL, NULL, NULL, NULL),
+(482, 34, 49, NULL, NULL, NULL, NULL),
+(483, 34, 50, NULL, NULL, NULL, NULL),
+(484, 34, 51, NULL, NULL, NULL, NULL),
+(485, 34, 52, NULL, NULL, NULL, NULL),
+(486, 34, 53, NULL, NULL, NULL, NULL),
+(487, 34, 54, NULL, NULL, NULL, NULL),
+(488, 34, 55, NULL, NULL, NULL, NULL),
+(489, 34, 56, NULL, NULL, NULL, NULL),
+(490, 34, 57, NULL, NULL, NULL, NULL),
+(491, 34, 58, NULL, NULL, NULL, NULL),
+(492, 34, 59, NULL, NULL, NULL, NULL),
+(493, 34, 60, NULL, NULL, NULL, NULL),
+(494, 34, 61, NULL, NULL, NULL, NULL),
+(495, 34, 64, NULL, NULL, NULL, NULL),
+(496, 34, 75, NULL, NULL, NULL, NULL),
+(497, 34, 76, NULL, NULL, NULL, NULL),
+(498, 34, 77, NULL, NULL, NULL, NULL),
+(499, 34, 78, NULL, NULL, NULL, NULL),
+(500, 34, 87, NULL, NULL, NULL, NULL),
+(501, 34, 92, NULL, NULL, NULL, NULL),
+(502, 34, 97, NULL, NULL, NULL, NULL),
+(503, 34, 98, NULL, NULL, NULL, NULL),
+(504, 34, 100, NULL, NULL, NULL, NULL),
+(505, 34, 101, NULL, NULL, NULL, NULL),
+(506, 34, 102, NULL, NULL, NULL, NULL),
+(507, 34, 103, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subjects`
+--
+
+CREATE TABLE `subjects` (
+  `subject_id` int(10) UNSIGNED NOT NULL,
+  `subject_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `descriptive_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `units` int(11) DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `subjects`
+--
+
+INSERT INTO `subjects` (`subject_id`, `subject_code`, `descriptive_title`, `units`, `remember_token`, `created_at`, `updated_at`) VALUES
+(2, 'Comp 11', 'Introduction to Computer Science 1', 3, NULL, NULL, NULL),
+(3, 'Comp 12', 'Introduction to Computer Science 2', 3, NULL, NULL, NULL),
+(4, 'Math 13', 'College Algebra', 0, NULL, NULL, NULL),
+(5, 'Eng 11', 'Grammar and Composition 1', 0, NULL, NULL, NULL),
+(6, 'Philo 11', 'Logic', 0, NULL, NULL, NULL),
+(7, 'Fil 11', 'Komunikasyon sa Akademikong Pilipino', 0, NULL, NULL, NULL),
+(8, 'PE 11', 'Physical Fitness', 0, NULL, NULL, NULL),
+(9, 'NSTP 11', 'National Service Training Program 1', 0, NULL, NULL, NULL),
+(10, 'IT 101', 'Database Management System 1', 0, NULL, NULL, NULL),
+(11, 'IT 102', 'Programming 1', 0, NULL, NULL, NULL),
+(12, 'Math 14', 'Plane Trigonometry', 0, NULL, NULL, NULL),
+(13, 'Eng 12', 'Grammar & Composition 2', 0, NULL, NULL, NULL),
+(14, 'Eng 14', 'Speech Communication', 0, NULL, NULL, NULL),
+(15, 'Fil 12', 'Pagbasa at Pagsulat Tungo sa Pananaliksik', 0, NULL, NULL, NULL),
+(16, 'PE 12', 'Rhythmic Activities', 0, NULL, NULL, NULL),
+(17, 'NSTP 12', 'National Service Training Program 2', 0, NULL, NULL, NULL),
+(18, 'IT 201', 'Accounting Principles', 0, NULL, NULL, NULL),
+(19, 'IT 202', 'Discrete Structures', 0, NULL, NULL, NULL),
+(20, 'Math 13', 'Network Management', 0, NULL, NULL, NULL),
+(21, 'IT 204', 'Operating Systems Application Concepts', 0, NULL, NULL, NULL),
+(22, 'IT 205', 'Programming 2', 0, NULL, NULL, NULL),
+(23, 'Eng 18', 'Business Communication', 0, NULL, NULL, NULL),
+(24, 'Lit 11', 'Literatures of the Philippines', 0, NULL, NULL, NULL),
+(25, 'Phy 13', 'General Physics 1', 0, NULL, NULL, NULL),
+(26, 'PE 13', 'Individual & Dual Sports Games', 0, NULL, NULL, NULL),
+(27, 'IT 206', 'Multimedia Systems', 0, NULL, NULL, NULL),
+(28, 'IT 207', 'Object-Oriented Programming', 0, NULL, NULL, NULL),
+(29, 'IT 208', 'Web Development', 0, NULL, NULL, NULL),
+(30, 'Lit 12', 'Literatures of the World', 0, NULL, NULL, NULL),
+(31, 'Phy 15', 'General Physics 2', 0, NULL, NULL, NULL),
+(32, 'Soc Sci 11', 'Philippine History', 0, NULL, NULL, NULL),
+(33, 'Stat 12', 'Probability & Statistics', 0, NULL, NULL, NULL),
+(34, 'PE 14', 'Dance & Recreational Activities', 0, NULL, NULL, NULL),
+(35, 'IT 301', 'Database Management System 2', 0, NULL, NULL, NULL),
+(36, 'IT 302', 'IT Elective 1', 0, NULL, NULL, NULL),
+(37, 'IT 303', 'Software Engineering', 0, NULL, NULL, NULL),
+(38, 'Res 11', 'Methods of Research', 0, NULL, NULL, NULL),
+(39, 'Soc Sci 12', 'Politics and Governance w/ Phil. Const', 0, NULL, NULL, NULL),
+(40, 'Soc Sci 13', 'Society and Culture w/ PopEd & HIV', 0, NULL, NULL, NULL),
+(41, 'Psycho 11', 'General Psychology w/ DAP', 0, NULL, NULL, NULL),
+(42, 'IT 304', 'Computer Organization', 0, NULL, NULL, NULL),
+(43, 'IT 305', 'Free Elective 1*', 0, NULL, NULL, NULL),
+(44, 'IT 306', 'Free Elective 2*', 0, NULL, NULL, NULL),
+(45, 'IT 307', 'IT Elective 2**', 0, NULL, NULL, NULL),
+(46, 'IT 308', 'Systems Analysis and Design', 0, NULL, NULL, NULL),
+(47, 'Econ 11', 'Introduction to Economics w/ TAR', 0, NULL, NULL, NULL),
+(48, 'Soc Sci 14', 'Rizal’s Life, Works and Writings', 0, NULL, NULL, NULL),
+(49, 'IT 401', 'Capstone Project', 0, NULL, NULL, NULL),
+(50, 'IT 402', 'Free Elective 3*', 0, NULL, NULL, NULL),
+(51, 'IT 403', 'IT Elective 3**', 0, NULL, NULL, NULL),
+(52, 'IT 404', 'IT Elective 4**', 0, NULL, NULL, NULL),
+(53, 'IT 405', 'IT Professional Ethics', 0, NULL, NULL, NULL),
+(54, 'IT 406', 'Internship/OJT/Practicum', 0, NULL, NULL, NULL),
+(60, 'CS 101', 'Computer Progamming 1', NULL, NULL, NULL, NULL),
+(61, 'CS 102', 'Database Systems', NULL, NULL, NULL, NULL),
+(62, 'CS 201', 'Computer Programming 2', NULL, NULL, NULL, NULL),
+(63, 'CS 202', 'Data Structures', NULL, NULL, NULL, NULL),
+(64, 'Math 79', 'Differential Calculus', NULL, NULL, NULL, NULL),
+(65, 'Phy 13', 'General Physics 1 (Mechanics Heat)', NULL, NULL, NULL, NULL),
+(66, 'CS 204', 'Automata & Language Theory', NULL, NULL, NULL, NULL),
+(67, 'CS 205', 'Digital Design', NULL, NULL, NULL, NULL),
+(68, 'CS 206', 'Object-Oriented Programming (VB.Net)', NULL, NULL, NULL, NULL),
+(69, 'CS 207', 'Programming Languages', NULL, NULL, NULL, NULL),
+(70, 'CS 301', 'CS Elective 1', NULL, NULL, NULL, NULL),
+(71, 'CS 302', 'Modelling and Simulation', NULL, NULL, NULL, NULL),
+(72, 'CS 303', 'Multimedia Systems', NULL, NULL, NULL, NULL),
+(73, 'CS 304', 'Web Programming', NULL, NULL, NULL, NULL),
+(74, 'CS 305', 'CS Elective 2', NULL, NULL, NULL, NULL),
+(75, 'CS 306', 'Free Elective 1', NULL, NULL, NULL, NULL),
+(76, 'CS 307', 'Mobile Computing', NULL, NULL, NULL, NULL),
+(77, 'CS 308', 'Operating Systems & Computer Architecture', NULL, NULL, NULL, NULL),
+(78, 'CS 309', 'Software Engineering', NULL, NULL, NULL, NULL),
+(79, 'CS 310', 'Internship/OJT/Practicum', NULL, NULL, NULL, NULL),
+(80, 'CS 401', 'CS Elective 3', NULL, NULL, NULL, NULL),
+(81, 'CS 402', 'Network Principles & Programming', NULL, NULL, NULL, NULL),
+(82, 'CS 403', 'Professional Ethics', NULL, NULL, NULL, NULL),
+(83, 'CS 404', 'System Analysis  & Design', NULL, NULL, NULL, NULL),
+(84, 'Psycho 11', 'General Psychology', NULL, NULL, NULL, NULL),
+(85, 'CS 405', 'CS Elective 4', NULL, NULL, NULL, NULL),
+(86, 'CS 406', 'Free Elective 2', NULL, NULL, NULL, NULL),
+(87, 'CS 407', 'Free Elective 3', NULL, NULL, NULL, NULL),
+(88, 'CS 408', 'Systems Development & Documentation', NULL, NULL, NULL, NULL),
+(89, 'Econ 11', 'Basic Economics w/ TAR', NULL, NULL, NULL, NULL),
+(90, 'Phy 15', 'General Physics 2', NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `school_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `curriculum_id` int(11) DEFAULT NULL,
+  `l_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `f_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `m_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `course_id` int(10) UNSIGNED NOT NULL,
+  `role_id` int(10) UNSIGNED NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `school_id`, `curriculum_id`, `l_name`, `f_name`, `m_name`, `email`, `password`, `course_id`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
+(2, '', 1, 'admin', 'admin', 'admin', 'admin', '$2y$10$KGIG5upJ.GlYqY.O/IOaKOJcz54uanpqb5kSeiUjjLxH77QpjmnZW', 0, 1, 'hJniTNH2LqmaKbCQscWEXD93jETbiCUl3KLjz52bmxyHMjornnsSNBtv6B76', NULL, NULL);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `courses`
+--
+ALTER TABLE `courses`
+  ADD PRIMARY KEY (`course_id`);
+
+--
+-- Indexes for table `curriculums`
+--
+ALTER TABLE `curriculums`
+  ADD PRIMARY KEY (`curriculum_id`);
+
+--
+-- Indexes for table `curriculumsubjects`
+--
+ALTER TABLE `curriculumsubjects`
+  ADD PRIMARY KEY (`curriculumsubject_id`);
+
+--
+-- Indexes for table `departments`
+--
+ALTER TABLE `departments`
+  ADD PRIMARY KEY (`department_id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`role_id`);
+
+--
+-- Indexes for table `studentchecklists`
+--
+ALTER TABLE `studentchecklists`
+  ADD PRIMARY KEY (`studentchecklist_id`);
+
+--
+-- Indexes for table `subjects`
+--
+ALTER TABLE `subjects`
+  ADD PRIMARY KEY (`subject_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `courses`
+--
+ALTER TABLE `courses`
+  MODIFY `course_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `curriculums`
+--
+ALTER TABLE `curriculums`
+  MODIFY `curriculum_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `curriculumsubjects`
+--
+ALTER TABLE `curriculumsubjects`
+  MODIFY `curriculumsubject_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+--
+-- AUTO_INCREMENT for table `departments`
+--
+ALTER TABLE `departments`
+  MODIFY `department_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `role_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `studentchecklists`
+--
+ALTER TABLE `studentchecklists`
+  MODIFY `studentchecklist_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=508;
+--
+-- AUTO_INCREMENT for table `subjects`
+--
+ALTER TABLE `subjects`
+  MODIFY `subject_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

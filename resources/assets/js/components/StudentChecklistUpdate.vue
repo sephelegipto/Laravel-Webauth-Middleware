@@ -14,6 +14,7 @@
 					</div>
 					<small v-if="errors.name" class="has-text-danger">{{ errors.name[0] }}</small>
 				</div>
+				
 		
 			</section>
 			<footer class="modal-card-foot">
@@ -38,7 +39,7 @@
 				this.$emit('closeRequest');
 			},
 			update(){
-				axios.post('/student/updateGrade', {data : this.$data.list.curriculumsubject_id, user_id : this.$route.params.id, grade : this.$data.list.grade } ).then((response)=> {
+				axios.post('/student/updateGrade', this.$data.list ).then((response)=> {
 					this.close()
 			
 					

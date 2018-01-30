@@ -8,12 +8,7 @@
 			</header>
 			<section class="modal-card-body">
 				<div class="field">
-					<label class="label">Course</label>
-					<div class="select">
-						<select v-model="list.course_name">
-							<option v-for="cour,key in course" v-bind:value="cour.course_name">{{ cour.course_name }}</option>
-						</select>						
-					</div>
+					
 					<small v-if="errors.abbre" class="has-text-danger">{{ errors.abbre[0] }}</small>
 					<label class="label">Subject Code</label>
 					<div class="control">
@@ -24,32 +19,11 @@
 					<div class="control">
 						<input class="input" :class="{'is-danger':errors.name}" type="text" placeholder="Descriptive Title" v-model="list.descriptive_title">
 					</div>
-					<small v-if="errors.name" class="has-text-danger">{{ errors.name[0] }}</small>
-					<label class="label">Prerequisite</label>
-					<div class="control">
-						<input class="input" :class="{'is-danger':errors.name}" type="text" placeholder="Prerequisite" v-model="list.prerequisite">
-					</div>
-					<small v-if="errors.name" class="has-text-danger">{{ errors.name[0] }}</small>
 					<label class="label">Units</label>
 					<div class="control">
 						<input class="input" :class="{'is-danger':errors.name}" type="text" placeholder="Units" v-model="list.units">
 					</div>
-					<small v-if="errors.name" class="has-text-danger">{{ errors.name[0] }}</small>
-					<label class="label">Lecture Hours</label>
-					<div class="control">
-						<input class="input" :class="{'is-danger':errors.name}" type="text" placeholder="Lecture Hours" v-model="list.lec_hours">
-					</div>
-					<small v-if="errors.name" class="has-text-danger">{{ errors.name[0] }}</small>
-					<label class="label">Lab Hours</label>
-					<div class="control">
-						<input class="input" :class="{'is-danger':errors.name}" type="text" placeholder="Lab Hours" v-model="list.lab_hours">
-					</div>
-					<small v-if="errors.name" class="has-text-danger">{{ errors.name[0] }}</small>
-					<label class="label">Contact Hours</label>
-					<div class="control">
-						<input class="input" :class="{'is-danger':errors.name}" type="text" placeholder="Contact Hours" v-model="list.contact_hours">
-					</div>
-					<small v-if="errors.name" class="has-text-danger">{{ errors.name[0] }}</small>	
+					
 				
 
 				</div>
@@ -85,13 +59,7 @@ export default{
 		update(){
 			axios.patch(`/subject/${this.list.subject_id}`, this.$data.list).then((response)=> {
 
-				this.$parent.lists.sort(function(a,b){
-					if (a.name > b.name) {
-						return 1;
-					}else if(a.name < b.name){
-						return -1;
-					}
-				})
+				
 				this.close()
 			})
 			.catch((error) => this.errors = error.response.data.errors)

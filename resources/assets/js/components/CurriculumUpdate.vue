@@ -3,7 +3,7 @@
 		<div class="modal-background"></div>
 		<div class="modal-card">
 			<header class="modal-card-head">
-				<p class="modal-card-title">Update {{ list.course_name }}'s </p>
+				<p class="modal-card-title">Update {{ list.descriptive_title }}'s </p>
 				<button class="delete" aria-label="close" @click='close'></button>
 			</header>
 			<section class="modal-card-body">
@@ -56,13 +56,7 @@ export default{
 		update(){
 			axios.patch(`/curriculum/${this.list.curriculum_id}`, this.$data.list).then((response)=> {
 
-				this.$parent.lists.sort(function(a,b){
-					if (a.name > b.name) {
-						return 1;
-					}else if(a.name < b.name){
-						return -1;
-					}
-				})
+			
 				this.close()
 			})
 			.catch((error) => this.errors = error.response.data.errors)

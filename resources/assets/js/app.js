@@ -10,6 +10,10 @@ Vue.use(VueRouter)
 let Myheader = require('./components/Myheader.vue');
 let Myfooter = require('./components/Myfooter.vue');
 
+let Studentheader = require('./components/StudentHeader.vue');
+
+
+let Studpagechecklist = require('./components/StudPageChecklist')
 let Dashboard = require('./components/Dashboard.vue');
 let Student = require('./components/Student.vue');
 let Home = require('./components/Home.vue');
@@ -29,7 +33,7 @@ const routes = [
 { path: '/student', component: Student },
 { path: '/home', component: Home },
 { path: '/about', component: About },
-{ path: '/subjectpercourse', component: SubjectPerCourse },
+{ path: '/subject', component: Subject },
 { path: '/subject/:id/:name', component: Subject },
 { path: '/department', component: Department },
 { path: '/course', component: Course },
@@ -47,7 +51,11 @@ const router = new VueRouter({
 const app = new Vue({
 	el: '#app',
 	router,
-	components:{Myheader, Myfooter}
+	components:{Myheader, Myfooter, Studentheader, Studpagechecklist}
 });
+
+
+
+
 
 

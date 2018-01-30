@@ -11,40 +11,66 @@ class StudentController extends Controller
 	public function getData()
 	{
 		return  DB::table('users')
-		->leftJoin('courses', 'users.course_id', '=', 'courses.course_id')
+		->join('courses', 'courses.course_id', '=', 'courses.course_id')
 		->join('departments', 'departments.department_id', '=', 'courses.department_id')
 		->select('courses.*', 'courses.*', 'users.*', 'departments.abbre as dept_name')
 		->where('role_id', 2)
 		->get();
 	}
-
+	
 	public function getStudentChecklist(Request $request){
+		$temptable = DB::raw("(SELECT * 
+			FROM curriculumsubjects WHERE curriculum_id = $request->curriculum_id) as cursub");
 
-		$collection = DB::table('curriculumsubjects')
-		->leftJoin('studentchecklists', 'curriculumsubjects.curriculumsubject_id', '=', 'studentchecklists.curriculumsubject_id')
-		->join('subjects', 'curriculumsubjects.subject_id', '=', 'subjects.subject_id')
+		return DB::table('studentchecklists')
 
-		->select('curriculumsubjects.*','studentchecklists.grade as grade', 'subjects.*')
-
+		->leftJoin($temptable, 'cursub.curriculumsubject_id', '=', 'studentchecklists.curriculumsubject_id')
+		->join('subjects', 'subjects.subject_id', '=', 'cursub.subject_id') 
+		->select('subjects.*', 'cursub.*','subjects.subject_id as subject_id', 'studentchecklists.*')
 		->where('studentchecklists.user_id', $request->id)
+		->orWhere('cursub.subject_id', null)
+
+	
 		->get();
 
-		$unique = $collection->unique('subject_code');
-		return $unique;
+	}
 
+	public function getStudentChecklistForStudentPage(){
+		$curriculum_id = Auth::user()->curriculum_id;
+		$user_id = Auth::user()->id;
+
+		$temptable = DB::raw("(SELECT * 
+			FROM curriculumsubjects WHERE curriculum_id = $curriculum_id) as cursub");
+
+		return DB::table('studentchecklists')
+
+		->leftJoin($temptable, 'cursub.curriculumsubject_id', '=', 'studentchecklists.curriculumsubject_id')
+		->join('subjects', 'subjects.subject_id', '=', 'cursub.subject_id') 
+		->select('subjects.*', 'cursub.*','subjects.subject_id as subject_id', 'studentchecklists.*')
+		->where('studentchecklists.user_id', $user_id)
+		->orWhere('cursub.subject_id', null)	
+		->get();
+
+
+
+	}
+
+	public function studPageStudDetail()
+	{
+		return Auth::user()->l_name . ', ' . Auth::user()->f_name . ' ' . Auth::user()->m_name ;
 	}
 
 	public function updateGrade(Request $request)
 	{
 		
 		$result = DB::table('studentchecklists')
-		->where('curriculumsubject_id', $request->data)
+		->where('curriculumsubject_id', $request->curriculumsubject_id)
 		->where('user_id', $request->user_id)
 		->get();
 
 		if($result->count() > 0){
 			DB::table('studentchecklists')
-			->where('curriculumsubject_id', $request->data)
+			->where('curriculumsubject_id', $request->curriculumsubject_id)
 			->where('user_id', $request->user_id)
 			->update(['grade' => $request->grade]);
 		} else {
